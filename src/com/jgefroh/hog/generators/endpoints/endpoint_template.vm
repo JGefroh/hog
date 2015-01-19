@@ -1,0 +1,52 @@
+#set ($managerName = $model.name.toString().toLowerCase() + "Manager")
+#set ($modelName = $model.name.toString())
+package com.jgefroh.$FormatUtil.pluralize(${modelName.toLowerCase()});
+import java.util.List;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+/**
+ * Automatically generated with HOG.
+ * @author Joseph Gefroh
+ */
+@RequestScoped
+@Path("/$FormatUtil.pluralize($model.name.toString().toLowerCase())")
+public class ${modelName}Endpoint {
+    @Inject private ${modelName}Manager ${modelName.toLowerCase()}Manager;
+    
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<${modelName}DTO> getAll() {
+        return ${managerName}.map(${managerName}.getAll());
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{id}")
+    public ${modelName}DTO get${modelName}(@PathParam("id") final Integer id) {
+        return ${managerName}.map(${managerName}.get(id));
+    }
+    
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public ${modelName}DTO save${modelName}(final ${modelName}DTO ${modelName.toLowerCase()}) {
+        return ${managerName}.map(${managerName}.save(${modelName.toLowerCase()}));
+    }
+    
+    
+    @DELETE
+    @Path("/{id}/delete")  //[JG]: conflicts with path otherwise
+    public void delete${modelName}(@PathParam("id") final Integer id) {
+        ${managerName}.delete(id);
+    }
+}

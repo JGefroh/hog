@@ -1,0 +1,82 @@
+#set ($managerName = $model.name.toString().toLowerCase() + "Manager")
+#set ($modelName = $model.name.toString())
+#set ($daoName = $model.name.toString().toLowerCase() + "DAO")
+package com.jgefroh.$FormatUtil.pluralize(${modelName.toLowerCase()});
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+
+
+/**
+ * Automatically generated with HOG.
+ * @author Joseph Gefroh
+ */
+@Stateless
+public class ${modelName}Manager {
+    @Inject private ${modelName}DAO ${modelName.toLowerCase()}DAO;
+    
+    public List<${modelName}> getAll() {
+        return ${daoName}.getAll();
+    }
+    
+    
+    public ${modelName} get(final int id) {
+        return ${daoName}.find(id);
+    }
+    
+    
+    public ${modelName} save(final ${modelName}DTO dto) {
+        ${modelName} entity = null;
+        if (isNew(dto)) {
+            entity = new ${modelName}();
+        }
+        else {
+            entity = ${daoName}.find(dto.getId());
+        }
+        mapSaveable(dto, entity);
+        return save(entity);
+    }
+    
+    private boolean isNew(final ${modelName}DTO dto) {
+        return dto.getId() == null;
+    }
+    
+    public ${modelName} save(final ${modelName} entity) {
+        return ${daoName}.save(entity);
+    }
+    
+    
+    public void delete(final int id) {
+        ${daoName}.delete(id);
+    }
+    
+    
+    
+    
+    public ${modelName}DTO map(final ${modelName} entity) {
+        ${modelName}DTO dto = new ${modelName}DTO();
+#foreach ($field in $model.fieldDefinitions)
+        dto.set$FormatUtil.camelCase($field.name.toString())(entity.get$FormatUtil.camelCase($field.name.toString())());
+#end
+        return dto;
+    }
+    
+    public List<${modelName}DTO> map(final List<${modelName}> entities) {
+        List<${modelName}DTO> dtos = new ArrayList<${modelName}DTO>();
+        for (${modelName} entity : entities == null ? Collections.<${modelName}>emptyList() : entities) {
+            ${modelName}DTO dto = map(entity);
+            dtos.add(dto);
+        }
+        return dtos;
+    }
+    
+    public void mapSaveable(final ${modelName}DTO dto, final ${modelName} entity) {
+#foreach ($field in $model.fieldDefinitions)
+        entity.set$FormatUtil.camelCase($field.name.toString())(dto.get$FormatUtil.camelCase($field.name.toString())());
+#end
+    }
+}

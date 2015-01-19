@@ -1,0 +1,19 @@
+#set ($modelName = $model.name.toString())
+package com.jgefroh.$FormatUtil.pluralize(${modelName.toLowerCase()});
+
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
+
+
+@Stateless
+public class $model.name.toString()DAOImpl extends GenericDAOImpl<$model.name.toString()> implements $model.name.toString()DAO {
+    @Override
+    public List<${modelName}> getAll() {
+        StringBuilder sql = new StringBuilder();
+        sql.append("select ${modelName.charAt(0)} from ${modelName} ${modelName.charAt(0)}");
+
+        TypedQuery<${modelName}> query = em.createQuery(sql.toString(), ${modelName}.class);
+        return query.getResultList();
+    }
+}

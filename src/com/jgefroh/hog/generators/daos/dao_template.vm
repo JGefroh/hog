@@ -1,0 +1,8 @@
+#set ($modelName = $model.name.toString())
+package com.jgefroh.$FormatUtil.pluralize(${modelName.toLowerCase()});
+
+import java.util.List;
+
+public interface ${modelName}DAO extends GenericDAO<${modelName}> {
+    List<${modelName}> getAll();
+}
