@@ -27,7 +27,7 @@ public class CodeGenerator {
                 return value;
             }
         });
-        Template velTemplate = Velocity.getTemplate(template.getPath());
+        Template velTemplate = Velocity.getTemplate(template.getTemplatePath());
         StringWriter writer = new StringWriter();
         velTemplate.merge(context, writer);
         return writer.toString();

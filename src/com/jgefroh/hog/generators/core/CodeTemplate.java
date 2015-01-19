@@ -6,12 +6,19 @@ import java.util.Map;
 import com.jgefroh.hog.generators.util.FormatUtil;
 
 
-public abstract class CodeTemplate {
+public class CodeTemplate {
 
     private Map<String, Object> parameters = new HashMap<String, Object>();
-
-    public CodeTemplate() {
+    private String templatePath = null;
+    private String outputFileName = null;
+    
+    private CodeTemplate() {
+    }
+    
+    public CodeTemplate(final String templatePath, final String outputFileName) {
         put("FormatUtil", FormatUtil.class);
+        this.templatePath = templatePath;
+        this.outputFileName = outputFileName;
     }
     
     public Map<String, Object> getParameters() {
@@ -26,6 +33,13 @@ public abstract class CodeTemplate {
         return parameters.get(key);
     }
     
-    public abstract String getPath();
+    
+    public String getOutputPath() {
+        return outputFileName;
+    }
+    
+    public String getTemplatePath() {
+        return templatePath;
+    }
 }
 

@@ -8,15 +8,11 @@ import com.jgefroh.hog.fields.FieldDefinition;
 public class ModelDefinition {
     
     private List<FieldDefinition> fieldDefinitions = new ArrayList<FieldDefinition>();
-    private final ModelName name;
-    private final PackageName packageName;
+    private final String name;
+    private final String packageName;
     
     
-    public static ModelDefinition ModelDefinition(ModelName name, PackageName packageName) {
-        return new ModelDefinition(name, packageName);
-    }
-    
-    public ModelDefinition(final ModelName name, final PackageName packageName) {
+    public ModelDefinition(final String name, final String packageName) {
         this.name = name;
         this.packageName = packageName;
     }
@@ -38,11 +34,11 @@ public class ModelDefinition {
     
     
     
-    public ModelName getName() {
+    public String getName() {
         return name;
     }
     
-    public PackageName getPackageName() {
+    public String getPackageName() {
         return packageName;
     }
 }

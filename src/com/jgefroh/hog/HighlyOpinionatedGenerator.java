@@ -1,27 +1,44 @@
 package com.jgefroh.hog;
 
-import static com.jgefroh.hog.persistence.FilePath.FilePath;
-import static com.jgefroh.hog.persistence.TextContent.TextContent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
-import com.jgefroh.hog.generators.daos.DAOGenerator;
-import com.jgefroh.hog.generators.daos.DAOImplGenerator;
-import com.jgefroh.hog.generators.dtos.DTOGenerator;
-import com.jgefroh.hog.generators.endpoints.EndpointGenerator;
-import com.jgefroh.hog.generators.entities.EntityGenerator;
-import com.jgefroh.hog.generators.managers.ManagerGenerator;
+import com.jgefroh.hog.generators.core.CodeGenerator;
+import com.jgefroh.hog.generators.core.CodeTemplate;
 import com.jgefroh.hog.models.ModelDefinition;
 import com.jgefroh.hog.persistence.SourceSaver;
 
 
 public class HighlyOpinionatedGenerator {
+    
+    Logger logger = Logger.getLogger(this.getClass().getSimpleName());
 
     public void generate(ModelDefinition model) {
-        SourceSaver.save(FilePath("generated\\" + model.getPackageName().asRelativePath() + model.getName() + ".java"), TextContent(new EntityGenerator().generate(model)));
-        SourceSaver.save(FilePath("generated\\" + model.getPackageName().asRelativePath() + model.getName() + "DTO.java"), TextContent(new DTOGenerator().generate(model)));
-        SourceSaver.save(FilePath("generated\\" + model.getPackageName().asRelativePath() + model.getName() + "Endpoint.java"), TextContent(new EndpointGenerator().generate(model)));
-        SourceSaver.save(FilePath("generated\\" + model.getPackageName().asRelativePath() + model.getName() + "Manager.java"), TextContent(new ManagerGenerator().generate(model)));
-        SourceSaver.save(FilePath("generated\\" + model.getPackageName().asRelativePath() + model.getName() + "DAO.java"), TextContent(new DAOGenerator().generate(model)));
-        SourceSaver.save(FilePath("generated\\" + model.getPackageName().asRelativePath() + model.getName() + "DAOImpl.java"), TextContent(new DAOImplGenerator().generate(model)));
+        logger.info("Generating...");
+        String baseOutputPath = "generated\\" + model.getPackageName().replace(".", "\\") + "\\" + model.getName();
+        
+        List<CodeTemplate> templates = new ArrayList<CodeTemplate>();
+        templates.add(new CodeTemplate("com/jgefroh/hog/templates/entity_template.vm", baseOutputPath + ".java"));
+        templates.add(new CodeTemplate("com/jgefroh/hog/templates/dto_template.vm", baseOutputPath + "DTO.java"));
+        templates.add(new CodeTemplate("com/jgefroh/hog/templates/endpoint_template.vm", baseOutputPath + "Endpoint.java"));
+        templates.add(new CodeTemplate("com/jgefroh/hog/templates/manager_template.vm", baseOutputPath + "Manager.java"));
+        templates.add(new CodeTemplate("com/jgefroh/hog/templates/dao_template.vm", baseOutputPath + "DAO.java"));
+        templates.add(new CodeTemplate("com/jgefroh/hog/templates/daoimpl_template.vm", baseOutputPath + "DAOImpl.java"));
+        
+        
+        CodeGenerator generator = new CodeGenerator();
+        for (CodeTemplate template : templates) {
+            logger.info("...Generating code using template " + template.getTemplatePath());
+            template.put("model", model);
+            try {
+                SourceSaver.save(template.getOutputPath(), generator.generate(template));
+            }
+            catch(Exception e) {
+                logger.severe("...error while generating " + template.getTemplatePath() + " - skipping. [error: '" + e.getMessage() + "']");
+            }
+        }
+        logger.info("Finished generating.");
     }
 
 }

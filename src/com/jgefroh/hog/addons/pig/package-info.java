@@ -7,4 +7,4 @@
  * @author Joseph Gefroh
  * @date 01/18/2015
  */
-package com.jgefroh.pig;
+package com.jgefroh.hog.addons.pig;

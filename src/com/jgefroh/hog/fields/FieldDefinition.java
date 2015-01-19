@@ -1,35 +1,29 @@
 package com.jgefroh.hog.fields;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.jgefroh.hog.models.ModelName;
 
 
 
 
 public class FieldDefinition {
-    private final FieldName name;
-    private final FieldType type;
+    private final String name;
+    private final String type;
     private List<FieldAttribute> attributes;
     
-    private FieldDefinition(FieldName name, FieldType type, List<FieldAttribute> attributes) {
+    public FieldDefinition(String name, String type, FieldAttribute ... attributes) {
         this.name = name;
         this.type = type;
-        this.attributes = new ArrayList<FieldAttribute>(attributes);
+        this.attributes = Arrays.asList((attributes));
     }
     
-    public static FieldDefinition FieldDefinition(FieldName name, FieldType type, FieldAttribute ... attributes) {
-        return new FieldDefinition(name, type, Arrays.asList(attributes));
+
+    public String getName() {
+        return this.name;
     }
     
-    public FieldName getName() {
-        return name;
-    }
-    
-    public FieldType getType() {
-        return type;
+    public String getType() {
+        return this.type;
     }
     
     public List<FieldAttribute> getAttributes() {
@@ -40,8 +34,8 @@ public class FieldDefinition {
         return attributes.contains(FieldAttribute.ID_FIELD);
     }
     
-    public boolean typeIs(final ModelName name) {
-        return type.toString().equals(name.toString()) || type.toString().endsWith("<" + name.toString() + ">");
+    public boolean typeIs(final String name) {
+        return type.equals(name) || type.endsWith("<" + name + ">");
     }
     
     public String getBaseType() {

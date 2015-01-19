@@ -1,12 +1,5 @@
 package com.jgefroh.hog.gui;
 
-import static com.jgefroh.hog.fields.FieldDefinition.FieldDefinition;
-import static com.jgefroh.hog.fields.FieldName.FieldName;
-import static com.jgefroh.hog.fields.FieldType.FieldType;
-import static com.jgefroh.hog.models.ModelDefinition.ModelDefinition;
-import static com.jgefroh.hog.models.ModelName.ModelName;
-import static com.jgefroh.hog.models.PackageName.PackageName;
-
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,8 +15,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import com.jgefroh.hog.HighlyOpinionatedGenerator;
+import com.jgefroh.hog.fields.FieldDefinition;
 import com.jgefroh.hog.models.ModelDefinition;
-import com.jgefroh.pig.PracticalInterfaceGenerator;
 
 
 public class MainWindow {
@@ -104,7 +97,6 @@ public class MainWindow {
         form.addRemoveClickedListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("HERP");
                 mainPanel.remove(form.getPanel());
                 fieldForms.remove(form);
                 frame.validate();
@@ -117,15 +109,15 @@ public class MainWindow {
     }
     
     private void generate(final String modelName, final String packageName, final List<FieldDefinitionForm> forms) {
-        ModelDefinition model = ModelDefinition(ModelName(modelName), PackageName(packageName));
+        ModelDefinition model = new ModelDefinition(modelName, packageName);
 
         for (FieldDefinitionForm form : forms) {
-            model.addField(FieldDefinition(FieldName(form.getName()), FieldType(form.getType()), form.getAttribute()));
+            model.addField(new FieldDefinition(form.getName(), form.getType(), form.getAttribute()));
         }
         
-        PracticalInterfaceGenerator pig = new PracticalInterfaceGenerator();
-        pig.generate(model);
-//        HighlyOpinionatedGenerator generator = new HighlyOpinionatedGenerator();
-//        generator.generate(model);
+//        PracticalInterfaceGenerator pig = new PracticalInterfaceGenerator();
+//        pig.generate(model);
+        HighlyOpinionatedGenerator generator = new HighlyOpinionatedGenerator();
+        generator.generate(model);
     }
 }
