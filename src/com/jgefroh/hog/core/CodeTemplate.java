@@ -3,7 +3,7 @@ package com.jgefroh.hog.core;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.jgefroh.hog.templates.util.FormatUtil;
+import com.jgefroh.hog.templates.FormatUtil;
 
 
 public class CodeTemplate {

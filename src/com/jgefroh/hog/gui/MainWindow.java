@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import com.jgefroh.hog.HighlyOpinionatedGenerator;
 import com.jgefroh.hog.core.FieldDefinition;
 import com.jgefroh.hog.core.ModelDefinition;
+import com.jgefroh.pig.PracticalInterfaceGenerator;
 
 
 public class MainWindow {
@@ -78,14 +79,23 @@ public class MainWindow {
         });
         buttonPanel.add(addFieldButton);
         
-        JButton generateButton = new JButton("Generate");
-        generateButton.addActionListener(new ActionListener() {
+        JButton hogButton = new JButton("Generate with HOG");
+        hogButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                generate(modelName.getText(), packageName.getText(), fieldForms);
+                generateHOG(modelName.getText(), packageName.getText(), fieldForms);
             }
         });
-        buttonPanel.add(generateButton);
+        buttonPanel.add(hogButton);   
+        
+        JButton pigButton = new JButton("Generate with PIG");
+        pigButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                generatePIG(modelName.getText(), packageName.getText(), fieldForms);
+            }
+        });
+        buttonPanel.add(pigButton);
         
         mainPanel.add(buttonPanel);
         mainPanel.validate();
@@ -108,16 +118,25 @@ public class MainWindow {
         frame.validate();
     }
     
-    private void generate(final String modelName, final String packageName, final List<FieldDefinitionForm> forms) {
+    private void generateHOG(final String modelName, final String packageName, final List<FieldDefinitionForm> forms) {
+        ModelDefinition model = prepareModel(modelName, packageName, forms);
+        HighlyOpinionatedGenerator generator = new HighlyOpinionatedGenerator();
+        generator.generate(model);
+    }
+    
+    private void generatePIG(final String modelName, final String packageName, final List<FieldDefinitionForm> forms) {
+        ModelDefinition model = prepareModel(modelName, packageName, forms);
+        PracticalInterfaceGenerator pig = new PracticalInterfaceGenerator();
+        pig.generate(model);
+    }
+    
+    private ModelDefinition prepareModel(final String modelName, final String packageName, final List<FieldDefinitionForm> forms) {
         ModelDefinition model = new ModelDefinition(modelName, packageName);
 
         for (FieldDefinitionForm form : forms) {
             model.addField(new FieldDefinition(form.getName(), form.getType(), form.getAttribute()));
         }
         
-//        PracticalInterfaceGenerator pig = new PracticalInterfaceGenerator();
-//        pig.generate(model);
-        HighlyOpinionatedGenerator generator = new HighlyOpinionatedGenerator();
-        generator.generate(model);
+        return model;
     }
 }

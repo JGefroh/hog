@@ -1,4 +1,4 @@
-package com.jgefroh.hog.templates.util;
+package com.jgefroh.hog.templates;
 
 
 public class FormatUtil {
