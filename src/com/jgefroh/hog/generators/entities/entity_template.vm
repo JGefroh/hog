@@ -30,7 +30,7 @@ public class $model.name.toString() {
     @OneToMany#if(!$field.isLazy())(fetch = FetchType.EAGER)#end
     
 #end#end
-    private $field.type.toString() $field.name.toString()
+    private $field.type.toString() $field.name.toString();
 #end
 
 

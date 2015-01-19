@@ -37,7 +37,7 @@ public class FieldDefinition {
     }
     
     public boolean isId() {
-        return attributes.contains(FieldAttribute.ID);
+        return attributes.contains(FieldAttribute.ID_FIELD);
     }
     
     public boolean typeIs(final ModelName name) {
@@ -81,7 +81,7 @@ public class FieldDefinition {
     }
     
     public boolean isLazy() {
-        return attributes.contains(FieldAttribute.LAZY);
+        return attributes.contains(FieldAttribute.LAZY_LOADED);
     }
 
     public boolean isBaseType() {
