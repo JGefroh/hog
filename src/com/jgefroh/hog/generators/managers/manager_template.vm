@@ -89,6 +89,7 @@ public class ${modelName}Manager {
     }
     
     public void mapSaveable(final ${modelName}DTO dto, final ${modelName} entity) {
+    //TODO: HOG can't tell what is saveable and what isn't or what the mapping strategy is (yet) - take a look.
 #foreach ($field in $model.fieldDefinitions)
         entity.set$FormatUtil.pascalCase($field.name.toString())(dto.get$FormatUtil.pascalCase($field.name.toString())());
 #end

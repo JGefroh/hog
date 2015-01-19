@@ -57,7 +57,7 @@ public class FieldDefinition {
     public boolean isCollection() {
         return attributes.contains(FieldAttribute.ELEMENT_COLLECTION)
                 || attributes.contains(FieldAttribute.MANY_TO_MANY)
-                || attributes.contains(FieldAttribute.ONE_TO_MANY);
+                || attributes.contains(FieldAttribute.MANY_TO_ONE);
     }
     
     public boolean isElementCollection() {

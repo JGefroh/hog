@@ -6,7 +6,15 @@ package $model.packageName.$FormatUtil.pluralize(${model.name.toString().toLower
  */
 public class $model.name.toString()DTO {
 #foreach ($field in $model.fieldDefinitions)
-    private $field.type.toString()#if(!$field.isBaseType())DTO#end $field.name.toString();
+#if(!$field.isBaseType())
+#if($field.isCollection())
+    private ${FormatUtil.convertToDTOList($field.type.toString())} $field.name.toString();
+#else
+    private $field.type.toString()DTO $field.name.toString();
+#end
+#else
+    private $field.type.toString() $field.name.toString();
+#end
 #end
 
 

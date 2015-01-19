@@ -23,6 +23,10 @@ public class FormatUtil {
         }
     }
     
+    public static String convertToDTOList(final String entityList) {
+        return entityList.substring(0, entityList.length() - 1) + "DTO>";
+    }
+    
     public static String getGetterName(final String field) {
         if (field.startsWith("is")) {
             return field;
