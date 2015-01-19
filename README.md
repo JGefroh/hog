@@ -32,3 +32,6 @@ Some areas also skipped because the program doesn't know what to do - fill these
 ##### Why does the generated code not follow `INSERT BEST PRACTICE HERE`?
 The generators were designed for a specific non-ideal development situation. I highly recommend changing things to match your coding needs.
 
+
+##### Why is this application's source code so weird?
+I read about a style where parameter passing was done using strongly typed objects - no primitives of any kind. I tried it out for this project, but practicality won about halfway through. It was kind of weird programming like that and I'm not sure of the benefit of it. I'll have to try again before I form a solid opinion of it.
