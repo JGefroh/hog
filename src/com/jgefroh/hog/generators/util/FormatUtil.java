@@ -3,8 +3,12 @@ package com.jgefroh.hog.generators.util;
 
 public class FormatUtil {
 
-    public static String camelCase(final String word) {
+    public static String pascalCase(final String word) {
         return word.substring(0, 1).toUpperCase() + word.toString().substring(1);
+    }
+    
+    public static String camelCase(final String word) {
+        return word.substring(0, 1).toLowerCase() + word.toString().substring(1);
     }
     
     public static String pluralize(final String name) {
@@ -24,17 +28,16 @@ public class FormatUtil {
             return field;
         }
         else {
-            return "get" + camelCase(field);
+            return "get" + pascalCase(field);
         }
     }
     
     public static String getSetterName(final String field) {
-        System.out.println(field);
         if (field.startsWith("is")) {
-            return "set" + camelCase(field).substring(2);
+            return "set" + pascalCase(field).substring(2);
         }
         else {
-            return "set" + camelCase(field);
+            return "set" + pascalCase(field);
         }
     }
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.jgefroh.hog.models.ModelName;
+
 
 
 
@@ -36,6 +38,20 @@ public class FieldDefinition {
     
     public boolean isId() {
         return attributes.contains(FieldAttribute.ID);
+    }
+    
+    public boolean typeIs(final ModelName name) {
+        return type.toString().equals(name.toString()) || type.toString().endsWith("<" + name.toString() + ">");
+    }
+    
+    public String getBaseType() {
+        String t = type.toString();
+        if (t.contains("<")) {
+            return t.substring(t.indexOf('<') + 1, t.length() - 1);
+        }
+        else {
+            return t;
+        }
     }
     
     public boolean isCollection() {

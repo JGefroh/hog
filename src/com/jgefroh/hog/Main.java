@@ -33,6 +33,8 @@ public class Main {
         model.addField(FieldDefinition(FieldName("isFat"), FieldType("boolean")));
         model.addField(FieldDefinition(FieldName("friendIds"), FieldType("List<Integer>"), FieldAttribute.ELEMENT_COLLECTION));
         model.addField(FieldDefinition(FieldName("bestFriend"), FieldType("Person"), FieldAttribute.MANY_TO_ONE));
+        model.addField(FieldDefinition(FieldName("friends"), FieldType("List<Person>"), FieldAttribute.MANY_TO_MANY));
+        model.addField(FieldDefinition(FieldName("jobs"), FieldType("List<Job>"), FieldAttribute.MANY_TO_MANY));
         model.addField(FieldDefinition(FieldName("imaginaryFriend"), FieldType("Person"), FieldAttribute.ONE_TO_ONE));
         model.addField(FieldDefinition(FieldName("minions"), FieldType("Person"), FieldAttribute.ONE_TO_MANY));
         model.addField(FieldDefinition(FieldName("phoneNumber"), FieldType("String")));

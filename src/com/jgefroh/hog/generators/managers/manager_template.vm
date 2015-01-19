@@ -18,7 +18,13 @@ import javax.inject.Inject;
 @Stateless
 public class ${modelName}Manager {
     @Inject private ${modelName}DAO ${modelName.toLowerCase()}DAO;
-    
+#foreach ($field in $model.fieldDefinitions)
+#if(!$field.typeIs($model.name) && !$field.isBaseType())
+    @Inject private ${FormatUtil.pascalCase(${field.getBaseType()})}Manager ${FormatUtil.camelCase(${field.getBaseType()})}Manager;
+#end
+#end
+
+
     public List<${modelName}> getAll() {
         return ${daoName}.getAll();
     }
@@ -60,7 +66,15 @@ public class ${modelName}Manager {
     public ${modelName}DTO map(final ${modelName} entity) {
         ${modelName}DTO dto = new ${modelName}DTO();
 #foreach ($field in $model.fieldDefinitions)
-        dto.set$FormatUtil.camelCase($field.name.toString())(entity.get$FormatUtil.camelCase($field.name.toString())());
+#if($field.isBaseType())
+        dto.${FormatUtil.getSetterName($field.name.toString())}(entity.${FormatUtil.getGetterName($field.name.toString())}());
+#else
+#if($field.typeIs($model.name))
+        dto.${FormatUtil.getSetterName($field.name.toString())}(map(entity.${FormatUtil.getGetterName($field.name.toString())}()));
+#else
+        dto.${FormatUtil.getSetterName($field.name.toString())}(${FormatUtil.camelCase(${field.getBaseType()})}Manager.map(entity.${FormatUtil.getGetterName($field.name.toString())}()));
+#end
+#end
 #end
         return dto;
     }
@@ -76,7 +90,7 @@ public class ${modelName}Manager {
     
     public void mapSaveable(final ${modelName}DTO dto, final ${modelName} entity) {
 #foreach ($field in $model.fieldDefinitions)
-        entity.set$FormatUtil.camelCase($field.name.toString())(dto.get$FormatUtil.camelCase($field.name.toString())());
+        entity.set$FormatUtil.pascalCase($field.name.toString())(dto.get$FormatUtil.pascalCase($field.name.toString())());
 #end
     }
 }
