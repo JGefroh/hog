@@ -4,7 +4,7 @@ package com.jgefroh.hog.fields;
 public class FieldType {
 
     private final String type;
-
+    
     public FieldType(final String type) {
         this.type = type;
     }

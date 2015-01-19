@@ -4,7 +4,11 @@ package com.jgefroh.hog.fields;
 public enum FieldAttribute {
     ID,
     LOOKUP,
-    MANY_TO_ONE,
+    CONTAINED,
+    ELEMENT_COLLECTION,
+    LAZY,
+    ONE_TO_MANY,
     ONE_TO_ONE,
-    ONE_TO_MANY
+    MANY_TO_MANY,
+    MANY_TO_ONE,
 }

@@ -1,11 +1,35 @@
 package ${model.packageName.toString()}.$FormatUtil.pluralize(${model.name.toString().toLowerCase()});
-
 /**
  * Automatically generated with HOG.
  * @author Joseph Gefroh
  */
+@Entity
 public class $model.name.toString() {
 #foreach ($field in $model.fieldDefinitions)
+
+#if($field.isId())
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+#end
+#if($field.isOneToOne())
+    @OneToOne#if(!$field.isLazy())(fetch = FetchType.EAGER)#end
+    
+#end
+#if($field.isManyToOne())
+    @ManyToOne#if(!$field.isLazy())(fetch = FetchType.EAGER)#end
+    
+#end
+#if($field.isCollection())
+#if($field.isElementCollection())
+    @ElementCollection#if(!$field.isLazy())(fetch = FetchType.EAGER)#end
+    
+#elseif ($field.isManyToMany())
+    @ManyToMany#if(!$field.isLazy())(fetch = FetchType.EAGER)#end
+    
+#elseif ($field.isOneToMany())
+    @OneToMany#if(!$field.isLazy())(fetch = FetchType.EAGER)#end
+    
+#end#end
     private $field.type.toString() $field.name.toString();
 #end
 
