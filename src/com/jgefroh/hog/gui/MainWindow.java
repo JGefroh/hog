@@ -15,14 +15,12 @@ import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-import com.jgefroh.hog.fields.FieldAttribute;
 import com.jgefroh.hog.models.ModelDefinition;
 
 
@@ -100,7 +98,17 @@ public class MainWindow {
     
     
     private void createAndShowForm() {
-        FieldDefinitionForm form = new FieldDefinitionForm();
+        final FieldDefinitionForm form = new FieldDefinitionForm();
+        form.addRemoveClickedListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("HERP");
+                mainPanel.remove(form.getPanel());
+                fieldForms.remove(form);
+                frame.validate();
+            }
+        });
+        
         fieldForms.add(form);
         mainPanel.add(form.getPanel());
         frame.validate();

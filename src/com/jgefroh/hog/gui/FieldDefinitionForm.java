@@ -1,7 +1,10 @@
 package com.jgefroh.hog.gui;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +18,9 @@ public class FieldDefinitionForm {
     private JTextField name;
     private JTextField type;
     private JComboBox<FieldAttribute> attribute;
+    private JButton removeButton;
+    
+    
     public FieldDefinitionForm() {
         name = new JTextField(15);
         type = new JTextField(15);
@@ -27,6 +33,10 @@ public class FieldDefinitionForm {
         panel = new JPanel();
         panel.setMaximumSize(new Dimension(800, 30));
         
+        
+        removeButton = new JButton("X");
+        panel.add(removeButton);
+        
         panel.add(new JLabel("Field Name"));
         panel.add(name);
         
@@ -35,6 +45,10 @@ public class FieldDefinitionForm {
         
         panel.add(new JLabel("Field Attribute"));
         panel.add(attribute);
+    }
+    
+    public void addRemoveClickedListener(final ActionListener listener) {
+        removeButton.addActionListener(listener);
     }
     
     public JPanel getPanel() {

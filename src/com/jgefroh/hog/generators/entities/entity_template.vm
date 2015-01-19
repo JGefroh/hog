@@ -1,4 +1,4 @@
-package ${model.packageName.toString()}.$FormatUtil.pluralize(${model.name.toString().toLowerCase()});
+package ${model.packageName.toString()};
 /**
  * Automatically generated with HOG.
  * @author Joseph Gefroh

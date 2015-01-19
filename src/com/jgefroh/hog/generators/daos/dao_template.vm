@@ -1,5 +1,5 @@
 #set ($modelName = $model.name.toString())
-package $model.packageName.$FormatUtil.pluralize(${modelName.toLowerCase()});
+package $model.packageName;
 
 
 /**

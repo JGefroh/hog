@@ -1,7 +1,7 @@
 #set ($managerName = $model.name.toString().toLowerCase() + "Manager")
 #set ($modelName = $model.name.toString())
 #set ($daoName = $model.name.toString().toLowerCase() + "DAO")
-package $model.packageName.$FormatUtil.pluralize(${modelName.toLowerCase()});
+package $model.packageName;
 
 import java.util.ArrayList;
 import java.util.Collections;
