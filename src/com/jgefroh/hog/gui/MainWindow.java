@@ -21,7 +21,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import com.jgefroh.hog.HighlyOpinionatedGenerator;
 import com.jgefroh.hog.models.ModelDefinition;
+import com.jgefroh.pig.PracticalInterfaceGenerator;
 
 
 public class MainWindow {
@@ -121,7 +123,9 @@ public class MainWindow {
             model.addField(FieldDefinition(FieldName(form.getName()), FieldType(form.getType()), form.getAttribute()));
         }
         
-        HighlyOpinionatedGenerator generator = new HighlyOpinionatedGenerator();
-        generator.generate(model);
+        PracticalInterfaceGenerator pig = new PracticalInterfaceGenerator();
+        pig.generate(model);
+//        HighlyOpinionatedGenerator generator = new HighlyOpinionatedGenerator();
+//        generator.generate(model);
     }
 }

@@ -1,4 +1,4 @@
-package com.jgefroh.hog.gui;
+package com.jgefroh.hog;
 
 import static com.jgefroh.hog.persistence.FilePath.FilePath;
 import static com.jgefroh.hog.persistence.TextContent.TextContent;
