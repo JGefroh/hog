@@ -27,6 +27,10 @@ public class Main {
         model.addField(FieldDefinition(FieldName("firstName"), FieldType("String")));
         model.addField(FieldDefinition(FieldName("lastName"), FieldType("String")));
         model.addField(FieldDefinition(FieldName("location"), FieldType("String")));
+        model.addField(FieldDefinition(FieldName("money"), FieldType("BigDecimal")));
+        model.addField(FieldDefinition(FieldName("coordinate"), FieldType("double")));
+        model.addField(FieldDefinition(FieldName("accuracy"), FieldType("float")));
+        model.addField(FieldDefinition(FieldName("isFat"), FieldType("boolean")));
         model.addField(FieldDefinition(FieldName("friendIds"), FieldType("List<Integer>"), FieldAttribute.ELEMENT_COLLECTION));
         model.addField(FieldDefinition(FieldName("bestFriend"), FieldType("Person"), FieldAttribute.MANY_TO_ONE));
         model.addField(FieldDefinition(FieldName("imaginaryFriend"), FieldType("Person"), FieldAttribute.ONE_TO_ONE));

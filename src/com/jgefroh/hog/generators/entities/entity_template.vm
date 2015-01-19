@@ -30,15 +30,15 @@ public class $model.name.toString() {
     @OneToMany#if(!$field.isLazy())(fetch = FetchType.EAGER)#end
     
 #end#end
-    private $field.type.toString() $field.name.toString();
+    private $field.type.toString() $field.name.toString()
 #end
 
 
 #foreach ($field in $model.fieldDefinitions)
-    public final $field.type.toString() get$FormatUtil.camelCase($field.name.toString())() {
+    public final $field.type.toString() $FormatUtil.getGetterName($field.name.toString())() {
         return this.$field.name.toString();
     }
-    public final void set$FormatUtil.camelCase($field.name.toString())(final $field.type.toString() $field.name.toString()) {
+    public final void $FormatUtil.getSetterName($field.name.toString())(final $field.type.toString() $field.name.toString()) {
         this.$field.name.toString() = $field.name.toString();
     }
     

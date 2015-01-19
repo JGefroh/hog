@@ -68,5 +68,17 @@ public class FieldDefinition {
         return attributes.contains(FieldAttribute.LAZY);
     }
 
-
+    public boolean isBaseType() {
+        String t = type.toString().toLowerCase();
+        return t.contains("integer")
+                || t.contains("date")
+                || t.contains("string")
+                || t.contains("bigdecimal")
+                || t.contains("long")
+                || t.contains("short")
+                || t.contains("byte")
+                || t.contains("double")
+                || t.contains("float")
+                || t.contains("boolean");
+    }
 }

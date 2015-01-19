@@ -18,4 +18,23 @@ public class FormatUtil {
             return name + "s";
         }
     }
+    
+    public static String getGetterName(final String field) {
+        if (field.startsWith("is")) {
+            return field;
+        }
+        else {
+            return "get" + camelCase(field);
+        }
+    }
+    
+    public static String getSetterName(final String field) {
+        System.out.println(field);
+        if (field.startsWith("is")) {
+            return "set" + camelCase(field).substring(2);
+        }
+        else {
+            return "set" + camelCase(field);
+        }
+    }
 }
