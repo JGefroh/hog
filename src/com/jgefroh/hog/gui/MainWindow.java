@@ -57,7 +57,7 @@ public class MainWindow {
 
 
     private void createFrameAndMainPanels() {
-        frame = new JFrame("HOG - Highly Opinionated Generator by Joseph Gefroh");
+        frame = new JFrame("HOG - Highly Opinionated Generator v0.0.1 by Joseph Gefroh");
         frame.setSize(800, 600);  
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
