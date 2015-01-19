@@ -1,4 +1,9 @@
-package com.jgefroh.$FormatUtil.pluralize($model.name.toString().toLowerCase());
+package $model.packageName.$FormatUtil.pluralize(${model.name.toString().toLowerCase()});
+
+/**
+ * Automatically generated with HOG.
+ * @author Joseph Gefroh
+ */
 public class $model.name.toString()DTO {
 #foreach ($field in $model.fieldDefinitions)
     private $field.type.toString() $field.name.toString();

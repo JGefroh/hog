@@ -1,6 +1,11 @@
 #set ($modelName = $model.name.toString())
-package com.jgefroh.$FormatUtil.pluralize(${modelName.toLowerCase()});
+package $model.packageName.$FormatUtil.pluralize(${modelName.toLowerCase()});
 
+
+/**
+ * Automatically generated with HOG.
+ * @author Joseph Gefroh
+ */
 import java.util.List;
 
 public interface ${modelName}DAO extends GenericDAO<${modelName}> {

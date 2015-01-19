@@ -9,14 +9,16 @@ public class ModelDefinition {
     
     private List<FieldDefinition> fieldDefinitions = new ArrayList<FieldDefinition>();
     private final ModelName name;
+    private final PackageName packageName;
     
     
-    public static ModelDefinition ModelDefinition(ModelName name) {
-        return new ModelDefinition(name);
+    public static ModelDefinition ModelDefinition(ModelName name, PackageName packageName) {
+        return new ModelDefinition(name, packageName);
     }
     
-    public ModelDefinition(final ModelName name) {
+    public ModelDefinition(final ModelName name, final PackageName packageName) {
         this.name = name;
+        this.packageName = packageName;
     }
 
     
@@ -38,5 +40,9 @@ public class ModelDefinition {
     
     public ModelName getName() {
         return name;
+    }
+    
+    public PackageName getPackageName() {
+        return packageName;
     }
 }

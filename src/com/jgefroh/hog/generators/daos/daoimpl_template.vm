@@ -1,11 +1,14 @@
 #set ($modelName = $model.name.toString())
-package com.jgefroh.$FormatUtil.pluralize(${modelName.toLowerCase()});
+package $model.packageName.$FormatUtil.pluralize(${modelName.toLowerCase()});
 
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 
-
+/**
+ * Automatically generated with HOG.
+ * @author Joseph Gefroh
+ */
 @Stateless
 public class $model.name.toString()DAOImpl extends GenericDAOImpl<$model.name.toString()> implements $model.name.toString()DAO {
     @Override
