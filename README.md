@@ -1,2 +1,29 @@
 # hog
-HOG, the Highly Opinionated Generator, is a code generator designed to make work easier for me. Work smart, not hard.
+HOG, the Highly Opinionated Generator, is a code generator designed to make work easier for me.
+
+It auto-generates a barebones Java EE backend (REST Endpoint, Manager, DAO Layer, Entity) for a given data model.
+
+ Work smart, not hard.
+ 
+ 
+### How do I use it?
+* Add field names, types, and relationships as if you were creating a domain model object or JPA entity.
+* Once you are done, click `generate`.
+* Copy the generated code in the `generated/` folder into your project.
+
+
+### Frequently Asked Questions (FAQ)
+
+##### It doesn't work!
+Sorry. Try making sure you don't have any typos in your input. If it doesn't fix it, please submit an issue.
+
+
+##### Why are there compile errors?
+The program doesn't do any input checking. If a field name or type is invalid, or a field has a disallowed attribute, the program will still generate it anyways. I recommend hand-fixing any code that is generated and double checking if that is what you wanted.
+
+Some areas also skipped because the program doesn't know what to do - fill these in manually!
+
+
+##### Why does the generated code not follow <INSERT BEST PRACTICE HERE>?
+The generators were designed for a specific non-ideal development situation. I highly recommend changing things to match your coding needs.
+
