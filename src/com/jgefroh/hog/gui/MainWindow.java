@@ -15,8 +15,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import com.jgefroh.hog.HighlyOpinionatedGenerator;
-import com.jgefroh.hog.fields.FieldDefinition;
-import com.jgefroh.hog.models.ModelDefinition;
+import com.jgefroh.hog.core.FieldDefinition;
+import com.jgefroh.hog.core.ModelDefinition;
 
 
 public class MainWindow {

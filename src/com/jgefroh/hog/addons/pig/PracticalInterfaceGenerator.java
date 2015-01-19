@@ -1,6 +1,6 @@
 package com.jgefroh.hog.addons.pig;
 
-import com.jgefroh.hog.models.ModelDefinition;
+import com.jgefroh.hog.core.ModelDefinition;
 
 
 public class PracticalInterfaceGenerator {

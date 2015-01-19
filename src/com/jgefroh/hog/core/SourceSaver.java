@@ -1,4 +1,4 @@
-package com.jgefroh.hog.persistence;
+package com.jgefroh.hog.core;
 
 import java.io.File;
 import java.io.FileNotFoundException;

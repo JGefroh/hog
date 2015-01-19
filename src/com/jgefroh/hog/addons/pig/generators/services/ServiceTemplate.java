@@ -1,6 +1,6 @@
 package com.jgefroh.hog.addons.pig.generators.services;
 
-import com.jgefroh.hog.generators.core.CodeTemplate;
+import com.jgefroh.hog.core.CodeTemplate;
 
 
 public class ServiceTemplate extends CodeTemplate {

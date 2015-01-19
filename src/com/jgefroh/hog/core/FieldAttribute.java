@@ -1,4 +1,4 @@
-package com.jgefroh.hog.fields;
+package com.jgefroh.hog.core;
 
 
 public enum FieldAttribute {

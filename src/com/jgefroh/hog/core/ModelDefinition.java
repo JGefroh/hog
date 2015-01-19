@@ -1,9 +1,7 @@
-package com.jgefroh.hog.models;
+package com.jgefroh.hog.core;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.jgefroh.hog.fields.FieldDefinition;
 
 public class ModelDefinition {
     

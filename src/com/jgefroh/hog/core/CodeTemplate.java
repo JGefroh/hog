@@ -1,9 +1,9 @@
-package com.jgefroh.hog.generators.core;
+package com.jgefroh.hog.core;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.jgefroh.hog.generators.util.FormatUtil;
+import com.jgefroh.hog.templates.util.FormatUtil;
 
 
 public class CodeTemplate {

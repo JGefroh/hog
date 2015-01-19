@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.jgefroh.hog.fields.FieldAttribute;
+import com.jgefroh.hog.core.FieldAttribute;
 
 
 public class FieldDefinitionForm {
