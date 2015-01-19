@@ -29,6 +29,6 @@ The program doesn't do any input checking. If a field name or type is invalid, o
 Some areas also skipped because the program doesn't know what to do - fill these in manually!
 
 
-##### Why does the generated code not follow <INSERT BEST PRACTICE HERE>?
+##### Why does the generated code not follow `INSERT BEST PRACTICE HERE`?
 The generators were designed for a specific non-ideal development situation. I highly recommend changing things to match your coding needs.
 
