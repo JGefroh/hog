@@ -10,13 +10,13 @@
         ${FormatUtil.getDollarSign()}stateProvider
             .state('${modelName.toLowerCase()}_selection', {
                 url: '/${FormatUtil.pluralize(${modelName.toLowerCase()})}/selection',
-                templateUrl: 'modules/${modelNamePlural}/TaskSelectionView.html',
-                controller: 'TaskSelectionController'
+                templateUrl: 'modules/${modelNamePlural}/${modelName}SelectionView.html',
+                controller: '${modelName}SelectionController'
             })
             .state('${modelName.toLowerCase()}_edit', {
                 url: '/${FormatUtil.pluralize(${modelName.toLowerCase()})}/edit/:id',
-                templateUrl: 'modules/${modelNamePlural}/TaskEditView.html',
-                controller: 'TaskEditController'
+                templateUrl: 'modules/${modelNamePlural}/${modelName}EditView.html',
+                controller: '${modelName}EditController'
             });
     }
     angular

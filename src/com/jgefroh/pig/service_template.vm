@@ -52,10 +52,10 @@
 
 
         function save(${FormatUtil.camelCase(${modelName})}) {
-            return ${FormatUtil.getDollarSign()}http.put(endpoints.save(), $modelName.toLowerCase());
+            return ${FormatUtil.getDollarSign()}http.put(endpoints.save(), ${FormatUtil.camelCase(${modelName})});
         }
 
-        this.save = function(${modelName.toLowerCase()}) {
+        this.save = function(${FormatUtil.camelCase(${modelName})}) {
             return save(${FormatUtil.camelCase(${modelName})}).then(function(response) {
                 return response.data;
             });

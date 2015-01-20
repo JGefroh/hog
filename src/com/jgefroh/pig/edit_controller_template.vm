@@ -15,9 +15,9 @@
             }
             else if (${FormatUtil.getDollarSign()}state.params.id != 'new') {
                 ${FormatUtil.getDollarSign()}scope.operations.isLoading = true;
-                ${modelName}Service.get($state.params.id).then(function(${modelName.toLowerCase()}) {
+                ${modelName}Service.get($state.params.id).then(function(${FormatUtil.camelCase(${modelName})}) {
                     ${FormatUtil.getDollarSign()}scope.operations.isLoading = false;
-                    ${FormatUtil.getDollarSign()}scope.input = angular.copy(${modelName.toLowerCase()});
+                    ${FormatUtil.getDollarSign()}scope.input = angular.copy(${FormatUtil.camelCase(${modelName})});
                 }, function() {
                     ${FormatUtil.getDollarSign()}state.go('${modelName.toLowerCase()}_selection');
                 });
@@ -25,9 +25,9 @@
 
         }
 
-        ${FormatUtil.getDollarSign()}scope.save = function(${modelName.toLowerCase()}) {
+        ${FormatUtil.getDollarSign()}scope.save = function(${FormatUtil.camelCase(${modelName})}) {
             ${FormatUtil.getDollarSign()}scope.operations.isSaving = true;
-            ${modelName}Service.save(${modelName.toLowerCase()}).then(function() {
+            ${modelName}Service.save(${FormatUtil.camelCase(${modelName})}).then(function() {
                 ${FormatUtil.getDollarSign()}state.go('${modelName.toLowerCase()}_selection');
             });
         };

@@ -22,16 +22,16 @@
                     <th>${FormatUtil.pascalCase(${field.name})}</th>
 #end
                 </tr>
-                <tr data-ng-repeat="${modelName.toLowerCase()} in ${modelNamePlural}">
+                <tr data-ng-repeat="${FormatUtil.camelCase(${modelName})} in ${FormatUtil.pluralize(${FormatUtil.camelCase(${modelName})})}">
                     <td>
-                        <button data-ng-click="edit(${modelName.toLowerCase()})"
+                        <button data-ng-click="edit(${FormatUtil.camelCase(${modelName})})"
                                 class="btn btn-default btn-xs"><span class="fa fa-share"></span> Open </button>
-                        <button data-ng-click="showRemove(${modelName.toLowerCase()})"
+                        <button data-ng-click="showRemove(${FormatUtil.camelCase(${modelName})})"
                                 class="btn btn-default btn-xs"><span class="fa fa-remove"></span> Delete </button>
                     </td>
                     
 #foreach ($field in $model.fieldDefinitions)
-                    <td> {{ ${modelName.toLowerCase()}.${field.name} }}</td>
+                    <td> {{ ${FormatUtil.camelCase(${modelName})}.${field.name} }}</td>
 #end
                 </tr>
             </table>

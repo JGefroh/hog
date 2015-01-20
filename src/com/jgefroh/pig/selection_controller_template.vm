@@ -9,11 +9,11 @@
     function ${modelName}SelectionController (${FormatUtil.getDollarSign()}scope, ${FormatUtil.getDollarSign()}state, ${FormatUtil.getDollarSign()}modal, ${modelName}Service) {
         ${FormatUtil.getDollarSign()}scope.operations = {};
         getAll();
-        ${FormatUtil.getDollarSign()}scope.edit = function(${modelName.toLowerCase()}) {
-            ${FormatUtil.getDollarSign()}state.go('${modelName.toLowerCase()}_edit', {id:${modelName.toLowerCase()}.id});
+        ${FormatUtil.getDollarSign()}scope.edit = function(${FormatUtil.camelCase(${modelName})}) {
+            ${FormatUtil.getDollarSign()}state.go('${modelName.toLowerCase()}_edit', {id:${FormatUtil.camelCase(${modelName})}.id});
         };
 
-        ${FormatUtil.getDollarSign()}scope.showRemove = function(${modelName.toLowerCase()}) {
+        ${FormatUtil.getDollarSign()}scope.showRemove = function(${FormatUtil.camelCase(${modelName})}) {
             var modal = ${FormatUtil.getDollarSign()}modal.open(
                 {
                     templateUrl: '../../common/ConfirmationPopupView.html',
@@ -29,14 +29,14 @@
                 }
             );
             modal.result.then(function() {
-                remove(${modelName.toLowerCase()});
+                remove(${FormatUtil.camelCase(${modelName})});
             }, function() {
             });
         };
 
-        function remove(${modelName.toLowerCase()}) {
-            ${modelName}Service.delete${modelName}(${modelName.toLowerCase()}.id).then(function() {
-                removeFromArray(${modelName.toLowerCase()}, ${FormatUtil.getDollarSign()}scope.${FormatUtil.pluralize(${modelName.toLowerCase()})});
+        function remove(${FormatUtil.camelCase(${modelName})}) {
+            ${modelName}Service.delete${modelName}(${FormatUtil.camelCase(${modelName})}.id).then(function() {
+                removeFromArray(${FormatUtil.camelCase(${modelName})}, ${FormatUtil.getDollarSign()}scope.${FormatUtil.pluralize(${FormatUtil.camelCase(${modelName})})});
             });
         }
 
@@ -52,8 +52,8 @@
 
         function getAll() {
             ${FormatUtil.getDollarSign()}scope.operations.isLoading = true;
-            ${modelName}Service.getAll().then(function(${modelNamePlural}) {
-                ${FormatUtil.getDollarSign()}scope.${modelNamePlural} = ${modelNamePlural};
+            ${modelName}Service.getAll().then(function(${FormatUtil.pluralize(${FormatUtil.camelCase(${modelName})})}) {
+                ${FormatUtil.getDollarSign()}scope.${FormatUtil.pluralize(${FormatUtil.camelCase(${modelName})})} = ${FormatUtil.pluralize(${FormatUtil.camelCase(${modelName})})};
                 ${FormatUtil.getDollarSign()}scope.operations.isLoading = false;
             });
         }
