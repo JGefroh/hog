@@ -15,7 +15,7 @@
             }
             else if (${FormatUtil.getDollarSign()}state.params.id != 'new') {
                 ${FormatUtil.getDollarSign()}scope.operations.isLoading = true;
-                ${modelName}Service.get($state.params.id).then(function(${FormatUtil.camelCase(${modelName})}) {
+                ${modelName}Service.get(${FormatUtil.getDollarSign()}state.params.id).then(function(${FormatUtil.camelCase(${modelName})}) {
                     ${FormatUtil.getDollarSign()}scope.operations.isLoading = false;
                     ${FormatUtil.getDollarSign()}scope.input = angular.copy(${FormatUtil.camelCase(${modelName})});
                 }, function() {

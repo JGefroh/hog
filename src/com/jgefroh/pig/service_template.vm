@@ -24,7 +24,7 @@
                 return '../rest/$FormatUtil.pluralize(${modelName.toLowerCase()})/';
             },
             delete${modelName}: function(id) {
-                var originalURL = '../rest/$FormatUtil.pluralize(${modelName.toLowerCase()})/delete/{id}';
+                var originalURL = '../rest/$FormatUtil.pluralize(${modelName.toLowerCase()})/{id}/delete';
                 return originalURL.replace('{id}', id);
             }
         };
